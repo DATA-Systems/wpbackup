@@ -4,7 +4,7 @@
 
 # Parameter da?
 if [ $# -eq 0 ]; then
-    echo "SYNTAX: wordpress-backup.sh <path-to-WordPress> <path-to-BackupFolder> [dbonly]"
+    echo "SYNTAX: wpbackup.sh <path-to-WordPress> <path-to-BackupFolder> [dbonly]"
     exit 1
 fi
 
