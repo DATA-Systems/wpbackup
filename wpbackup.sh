@@ -13,7 +13,7 @@ bakdir=$2
 
 # Backupverzeichnis angegeben?
 if [ -z "$bakdir" ]; then
-    bakdir="~/priv"
+    bakdir=~/priv
 fi
 
 # Verzeichnisse da?
