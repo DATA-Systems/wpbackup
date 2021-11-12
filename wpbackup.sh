@@ -27,8 +27,9 @@ if [ ! -d $bakdir ]; then
 fi
 
 # Sinnvolle Dateinamen bauen
-db_backup_name="wp-db-backup-"`date "+%Y%m%d"`".sql.gz"
-wpfiles_backup_name="wp-files-backup-"`date "+%Y%m%d"`
+file_date_time=`date "+%Y%m%dT%H%M%S%Z"`
+db_backup_name="wp-db-backup-${file_date_time}.sql.gz"
+wpfiles_backup_name="wp-files-backup-${file_date_time}"
 
 # Zugangsdaten aus der config suchen
 db_name=`grep DB_NAME $wpdir/wp-config.php | cut -d \' -f 4`
