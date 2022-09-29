@@ -1,6 +1,5 @@
 #!/bin/bash
-#
-# SEHR einfaches WordPress-Backup
+# SEHR einfaches WordPress-Backup für "unsere" Umgebung
 
 # Parameter da?
 if [ $# -eq 0 ]; then
@@ -30,17 +29,17 @@ fi
 db_backup_name="wp-db-backup-"`date "+%Y%m%d"`".sql.gz"
 wpfiles_backup_name="wp-files-backup-"`date "+%Y%m%d"`
 
-# Zugangsdaten aus der config suchen
+# Zugangsdaten aus der wp-config parsen
 db_name=`grep DB_NAME $wpdir/wp-config.php | cut -d \' -f 4`
 db_username=`grep DB_USER $wpdir/wp-config.php | cut -d \' -f 4`
 db_password=`grep DB_PASSWORD $wpdir/wp-config.php | cut -d \' -f 4`
 
-# MySQLdump, gzip
+# MySQLdump | gzip
 mysqldump --opt -u$db_username -p$db_password $db_name | gzip > $bakdir/$db_backup_name
 
-# ... wenn "dbonly" nicht gesetzt ist
+# ... wenn "dbonly" NICHT gesetzt ist
 if [ ! "$3" = "dbonly" ]; then
-    # WordPress einpacken
+    # ganzes WordPress einpacken
     tar -czvf $bakdir/$wpfiles_backup_name.tar.gz $wpdir
 
     # Oder als zip:
